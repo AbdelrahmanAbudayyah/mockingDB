@@ -1,0 +1,13 @@
+{
+  "name": "mockingdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "player.js",
+  "scripts": {
+    "start": "node player.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
