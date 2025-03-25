@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'your-docker-image'
+            args '-v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'  // Path to your docker-compose file
     }
