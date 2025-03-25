@@ -1,14 +1,19 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:18'
-            args '-v /var/run/docker.sock:/var/run/docker.sock'
-        }
-    }
+    agent any
+    
     environment {
         DOCKER_COMPOSE_FILE = 'docker-compose.yml'  // Path to your docker-compose file
     }
     stages {
+        
+        stage('Initialize') {
+            steps {
+                script {
+                    def dockerHome = tool 'docker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
+            }
+        }
         stage('Checkout') {
             steps {
                 // Checkout the code from GitHub
